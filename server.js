@@ -10,8 +10,8 @@ app.use(cors()); // Habilitar CORS para permitir peticiones desde cualquier orig
 
 // Conexión a MongoDB sin opciones obsoletas
 mongoose.connect(process.env.MONGODB_URI, {
-  serverSelectionTimeoutMS: 100000, // Espera hasta 50s antes de fallar
-  socketTimeoutMS: 100000, // Tiempo máximo de espera para respuestas
+  serverSelectionTimeoutMS: 200000, // Espera hasta 50s antes de fallar
+  socketTimeoutMS: 200000, // Tiempo máximo de espera para respuestas
   maxPoolSize: 10, // Límite de conexiones simultáneas
 })
   .then(() => console.log('✅ Conectado a MongoDB'))
