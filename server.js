@@ -46,7 +46,7 @@ app.post('/api/verify', async (req, res) => {
       return res.status(400).json({ error: 'El campo lotId es obligatorio' });
     }
     
-    //const lot = await Lot.findOne({ lotNumberAndCia: req.body.lotId });
+    const lot = await Lot.findOne({ lotNumberAndCia: req.body.lotId });
     const lot = await Lot.findOne({ lotNumberAndCia: req.body.lotId },{_id:0,orders:1});
     console.log("Lote encontrado:", lot);
     
@@ -58,8 +58,8 @@ app.post('/api/verify', async (req, res) => {
     const orderIds = lot.orders.map(id => id.toString());
     console.log("IDs de órdenes:", orderIds);
     
-    //const orders = await Order.find({ _id: { $in: orderIds } });
-    const orders = await Order.find({ _id: { $in: orderIds } },{_id:0,documents:1});
+    const orders = await Order.find({ _id: { $in: orderIds } });
+    //const orders = await Order.find({ _id: { $in: orderIds } },{_id:0,documents:1});
     console.log("Órdenes encontradas:", orders);
     
     const formattedIds = orders.map(o => o.orderId.replace(/-/g, '_'));
