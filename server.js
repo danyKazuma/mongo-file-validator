@@ -46,7 +46,7 @@ app.post('/api/verify', async (req, res) => {
       return res.status(400).json({ error: 'El campo lotId es obligatorio' });
     }
     
-    const lot = await Lot.findOne({ lotNumberAndCia: req.body.lotId });
+    //const lot = await Lot.findOne({ lotNumberAndCia: req.body.lotId });
     const lot = await Lot.findOne({ lotNumberAndCia: req.body.lotId },{_id:0,orders:1});
     console.log("Lote encontrado:", lot);
     
