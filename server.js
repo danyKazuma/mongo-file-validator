@@ -28,7 +28,7 @@ const checkURL = async (url) => {
   try {
     const response = await axios.head(url);
     return {
-      valid: (response.headers['content-length'] > 12),
+      valid: (response.headers['content-length'] > 32),
       url: url
     };
   } catch (error) {
